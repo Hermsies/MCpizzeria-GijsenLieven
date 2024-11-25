@@ -21,7 +21,8 @@ import MCPizzeriaSQL
 venster = Tk()
 venster.iconbitmap("MC_icon.ico") #Let op: Dit werkt niet op een MAC! Zet deze regel dan in commentaar
 venster.wm_title("MC Pizzeria")
-
+knopSluit = Button(venster, text="Venster sluiten", width=50, command=venster.destroy)
+knopSluit.grid(row=0, column=0)
 
 
 
