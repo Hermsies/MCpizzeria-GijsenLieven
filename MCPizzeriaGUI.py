@@ -25,6 +25,11 @@ knopSluit = Button(venster, text="Venster sluiten", width=50, command=venster.de
 knopSluit.grid(row=17, column=4)
 labelIntro = Label (venster, text="Welkom!")
 labelIntro.grid(row=0, column=0, sticky='W')
+klantnaam = Label (venster, text='Klantnaam')
+klantnaam.grid(row= 1,column=0, sticky='W')
+ingevoerde_klantnaam = StringVar()
+invoerveldKlantnaam = Entry(venster, textvariable=ingevoerde_klantnaam)
+invoerveldKlantnaam.grid(row=1, column=1, sticky="W")
 
 
 

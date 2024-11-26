@@ -62,7 +62,7 @@ def voegKlantToe(naam_nieuwe_klant):
 
 ### --------- Hoofdprogramma  ---------------
 #verwijderTabellen()
-# maakTabellenAan()
+#maakTabellenAan()
 #Voeg klanten toe aan tabel:
 # voegKlantToe("Janssen")
 # voegKlantToe("Smit")
