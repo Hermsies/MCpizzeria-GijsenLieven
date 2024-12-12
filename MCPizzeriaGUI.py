@@ -53,6 +53,16 @@ invoerveldKlantNr = Entry(venster)
 invoerveldKlantNr.grid(row=2, column=1, sticky="W")
 knopZoekOpKlantnaam = Button(venster, text='Zoek klant', width=12, command=zoekKlant)
 knopZoekOpKlantnaam.grid(row=1, column=4)
+labelPizzanaam = Label (venster, text='Pizza naam')
+labelPizzanaam.grid(row=3, column=0)
+ingevoerde_pizzanaam = StringVar()
+invoerveldpizzanaam = Entry (venster, textvariable=ingevoerde_pizzanaam)
+invoerveldpizzanaam.grid (row=3, column=1)
+knopzoekopPizzanaam = Button(venster, text='Toon pizza', width=12, command=toonMenuInListbox)
+knopzoekopPizzanaam.grid (row=3,column=4)
+labelMogelijkheden = Label (venster, text='Mogelijkheden')
+labelMogelijkheden.grid(row=4, column=0)
+
 
 
 
