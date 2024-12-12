@@ -29,6 +29,12 @@ def zoekKlant():
         invoerveldKlantNr.insert(END, rij[0]) 
  #toon klantAchternaam, de tweede kolom uit het resultaat in de invoerveld
         invoerveldKlantnaam.insert(END, rij[1]) 
+
+def toonMenuInListbox():
+       listboxMenu.delete(0, END) #maak de listbox leeg
+       pizza_tabel = MCPizzeriaSQL.vraagOpGegevensPizzaTabel()
+       for regel in pizza_tabel:
+              listboxMenu.insert(END, regel)
 ### --------- Hoofdprogramma  ---------------
 
 venster = Tk()
@@ -47,6 +53,18 @@ invoerveldKlantNr = Entry(venster)
 invoerveldKlantNr.grid(row=2, column=1, sticky="W")
 knopZoekOpKlantnaam = Button(venster, text='Zoek klant', width=12, command=zoekKlant)
 knopZoekOpKlantnaam.grid(row=1, column=4)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
