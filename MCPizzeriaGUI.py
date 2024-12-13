@@ -33,8 +33,20 @@ def zoekKlant():
 def toonMenuInListbox():
        listboxMenu.delete(0, END) #maak de listbox leeg
        pizza_tabel = MCPizzeriaSQL.vraagOpGegevensPizzaTabel()
+       listboxMenu.insert(0, "ID Gerecht Prijs")
        for regel in pizza_tabel:
               listboxMenu.insert(END, regel)
+
+def haalGeselecteerdeRijOp(event):
+ #bepaal op welke regel er geklikt is
+ geselecteerdeRegelInLijst = listboxMenu.curselection()[0] 
+ #haal tekst uit die regel
+ geselecteerdeTekst = listboxMenu.get(geselecteerdeRegelInLijst) 
+ #verwijder tekst uit veld waar je in wilt schrijven, voor het geval er al iets staat
+ invoerveldGeselecteerdePizza.delete(0, END) 
+ #zet tekst in veld
+ invoerveldGeselecteerdePizza.insert(0, geselecteerdeTekst[1])
+
 ### --------- Hoofdprogramma  ---------------
 
 venster = Tk()
@@ -46,6 +58,8 @@ labelIntro = Label (venster, text="Welkom!")
 labelIntro.grid(row=0, column=0, sticky='W')
 klantnaam = Label (venster, text='Klantnaam')
 klantnaam.grid(row= 1,column=0, sticky='W')
+klantnummer = Label (venster, text='Klantnummer')
+klantnummer.grid(row= 2,column=0, sticky='W')
 ingevoerde_klantnaam = StringVar()
 invoerveldKlantnaam = Entry(venster, textvariable=ingevoerde_klantnaam)
 invoerveldKlantnaam.grid(row=1, column=1, sticky="W")
@@ -54,18 +68,25 @@ invoerveldKlantNr.grid(row=2, column=1, sticky="W")
 knopZoekOpKlantnaam = Button(venster, text='Zoek klant', width=12, command=zoekKlant)
 knopZoekOpKlantnaam.grid(row=1, column=4)
 labelPizzanaam = Label (venster, text='Pizza naam')
-labelPizzanaam.grid(row=3, column=0)
+labelPizzanaam.grid(row=3, column=0,sticky='W')
 ingevoerde_pizzanaam = StringVar()
 invoerveldpizzanaam = Entry (venster, textvariable=ingevoerde_pizzanaam)
-invoerveldpizzanaam.grid (row=3, column=1)
+invoerveldpizzanaam.grid (row=3, column=1,sticky='W')
 knopzoekopPizzanaam = Button(venster, text='Toon pizza', width=12, command=toonMenuInListbox)
 knopzoekopPizzanaam.grid (row=3,column=4)
 labelMogelijkheden = Label (venster, text='Mogelijkheden')
 labelMogelijkheden.grid(row=4, column=0)
-
-
-
-
+listboxMenu = Listbox (venster, width=50)
+listboxMenu.grid (row=4, column=1)
+listboxMenu.bind('<<ListboxSelect>>', haalGeselecteerdeRijOp)
+geselecteerdepizza = Label (venster, text='Gekozen pizza')
+geselecteerdepizza.grid(row=5, column=0)
+invoerveldGeselecteerdePizza = Entry (venster)
+invoerveldGeselecteerdePizza.grid(row=5, column=1,sticky='W')
+aantalGekozen = IntVar()
+aantalGekozen.set(1)
+optionMenuPizzaAantal = OptionMenu(venster, aantalGekozen, 1,2,3)
+optionMenuPizzaAantal.grid(row=5, column=1)
 
 
 
