@@ -28,7 +28,15 @@ def zoekKlant():
  #toon klantnummer, de eerste kolom uit het resultaat in de invoerveld
         invoerveldKlantNr.insert(END, rij[0]) 
  #toon klantAchternaam, de tweede kolom uit het resultaat in de invoerveld
-        invoerveldKlantnaam.insert(END, rij[1]) 
+        invoerveldKlantnaam.insert(END, rij[1])
+
+def zoekPizza():
+       gevonden_pizza = MCPizzeriaSQL.zoekPizzaInTabel(ingevoerde_pizzanaam.get())
+       print(gevonden_pizza)
+       listboxMenu.delete(0, END)
+       listboxMenu.insert(0,"ID Gerecht Prijs")
+       for regel in gevonden_pizza:
+            listboxMenu.insert(END, regel)
 
 def toonMenuInListbox():
        listboxMenu.delete(0, END) #maak de listbox leeg
@@ -72,8 +80,10 @@ labelPizzanaam.grid(row=3, column=0,sticky='W')
 ingevoerde_pizzanaam = StringVar()
 invoerveldpizzanaam = Entry (venster, textvariable=ingevoerde_pizzanaam)
 invoerveldpizzanaam.grid (row=3, column=1,sticky='W')
-knopzoekopPizzanaam = Button(venster, text='Toon pizza', width=12, command=toonMenuInListbox)
-knopzoekopPizzanaam.grid (row=3,column=4)
+knopZoekOpPizzaNaam = Button(venster, text='Zoek Pizza', width=12, command= zoekPizza)
+knopZoekOpPizzaNaam.grid (row=3,column=4)
+knopToonPizzas = Button(venster, text="Toon alle pizza's", width=12, command=toonMenuInListbox)
+knopToonPizzas.grid (row=4,column=4,sticky=N)
 labelMogelijkheden = Label (venster, text='Mogelijkheden')
 labelMogelijkheden.grid(row=4, column=0)
 listboxMenu = Listbox (venster, width=50)
@@ -85,7 +95,7 @@ invoerveldGeselecteerdePizza = Entry (venster)
 invoerveldGeselecteerdePizza.grid(row=5, column=1,sticky='W')
 aantalGekozen = IntVar()
 aantalGekozen.set(1)
-optionMenuPizzaAantal = OptionMenu(venster, aantalGekozen, 1,2,3)
+optionMenuPizzaAantal = OptionMenu(venster, aantalGekozen, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
 optionMenuPizzaAantal.grid(row=5, column=1)
 
 
