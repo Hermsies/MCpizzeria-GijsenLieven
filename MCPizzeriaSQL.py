@@ -105,7 +105,7 @@ def voegToeAanWinkelWagen(klantNr, gerechtID, aantal):
     printTabel("tbl_winkelWagen")
 
 def vraagOpGegevensWinkelWagenTabel():
-    cursor.execute("SECELT * FROM tbl_winkelWagen")
+    cursor.execute("SELECT * FROM tbl_winkelWagen")
     resultaat = cursor.fetchall()
     printTabel("tbl_winkelWagen")
     return resultaat
